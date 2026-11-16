@@ -1,0 +1,20 @@
+{
+  "id": "/global-trip-planner/",
+  "name": "Roamora — International Trip Planner",
+  "short_name": "Roamora",
+  "description": "Plan trips and understand your travel budget.",
+  "start_url": "/global-trip-planner/",
+  "scope": "/global-trip-planner/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f7f6f0",
+  "theme_color": "#122c2a",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
