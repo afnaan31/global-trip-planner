@@ -1,34 +1,36 @@
-# Roamora — Global Trip Planner (early prototype)
+# Roamora — International Trip Planner
 
-A static, responsive travel-planning prototype. The current version includes:
+Roamora is an early installable web-app prototype for planning trips and building transparent travel-budget estimates.
 
-- Trip inputs for origin, destination, duration (1–30 days), travellers, travel style and currency.
-- Editable estimates for accommodation, food, activities, local transport and main transport.
-- Car fuel, vehicle efficiency, route-distance and toll calculations.
-- A 10% contingency allowance and per-person total.
-- A simple daily itinerary outline.
-- Copy plan and print / save as PDF actions.
-- Mobile-friendly layout and destination prompts.
+## Current features
+- Trip inputs for origin, destination, duration, travellers and Budget / Premium / Luxury travel style.
+- Separate destination spending currency and traveller display currency.
+- Dated reference exchange-rate conversion using Frankfurter's public API. Rates are daily reference rates, not card, cash-exchange or live trading quotes.
+- Editable estimates for accommodation, food, activities, local transport, vehicle fuel, tolls and transport tickets.
+- Car fuel-cost formula, 10% contingency, group total and per-person total.
+- Generic day-by-day itinerary outline, copy plan and print / save as PDF.
+- Installable PWA shell with a basic offline cache and responsive layout.
 
 ## Important limitations
+This is a prototype, not a live travel marketplace or booking engine. Sample costs are illustrative presets, not verified prices for a specific city, date or provider. Replace them with researched local prices before relying on an estimate.
 
-This is an early prototype, not a live travel marketplace. It does not connect to hotel inventory, live flight fares, maps, traffic, weather, booking providers or an AI model. Sample rates are illustrative placeholders and must be replaced with researched quotes before relying on an estimate. The itinerary is a generic planning outline, not verified destination advice.
+The app does not yet fetch live hotel inventory, flight fares, maps, route distances, traffic, weather, attraction opening hours or availability. Road distance must be entered by the traveller. The itinerary is a generic outline, not verified local advice.
 
-No API keys or secrets are required for this prototype. Do not commit credentials to this repository.
+Currency conversion can be unavailable for some pairs. If it cannot retrieve a rate, the app displays the total in the destination currency instead of inventing a conversion. Reference rates can differ from rates and fees charged by banks or card providers.
 
-## Run locally
+No API keys or secrets are required. Do not commit credentials or private traveller data to this repository.
 
-Open index.html in a browser, or use a local static server.
+## Local use
+Open index.html in a browser, or serve this folder with a local static web server. Service-worker installation requires HTTPS or localhost.
 
-## Deploy on Netlify
+## Publishing
+A GitHub Actions workflow in .github/workflows/deploy-pages.yml publishes the app to GitHub Pages after pushes to main. After the first successful deployment, the expected address is https://afnaan31.github.io/global-trip-planner/. If GitHub Pages is not enabled automatically, open Settings, then Pages, and set the source to GitHub Actions.
 
-The site is static and the publish directory is the repository root. Connect the GitHub repository to Netlify and use the main branch. The included netlify.toml contains the basic publish configuration.
-
-## Next development milestones
-
-1. Validate the planner with real travellers.
-2. Add verified destination and supplier data with update timestamps.
-3. Add maps and route data through an approved provider.
-4. Add legitimate accommodation and activity affiliate / booking integrations.
-5. Add a backend for accounts, saved trips and synchronised data.
-6. Add AI trip generation with verified source data and clear price freshness.
+## Roadmap
+1. Validate estimates with real travellers and destinations.
+2. Add verified destination datasets with sources, timestamps and a maintenance process.
+3. Integrate route, maps and weather providers with documented cost limits.
+4. Integrate accommodation and activity partners through compliant affiliate links.
+5. Add accounts, saved trips, group collaboration and secure persistence.
+6. Add AI itinerary suggestions grounded in verified destination data.
+7. Add localisation, accessibility, privacy controls and production monitoring.
