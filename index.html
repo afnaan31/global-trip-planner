@@ -6,7 +6,7 @@
   <title>Roamora — Your trip, fully figured out</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css"><script src="app.js" defer></script>
+  <link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="manifest" href="manifest.webmanifest"><link rel="stylesheet" href="styles.css"><script src="app.js" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -42,7 +42,7 @@
             <label class="field"><span>Trip length</span><div class="input-with-unit"><input id="days" name="days" type="number" min="1" max="30" value="3" required><span>days</span></div></label>
             <label class="field"><span>Travellers</span><div class="input-with-unit"><input id="travellers" name="travellers" type="number" min="1" max="40" value="2" required><span>people</span></div></label>
             <label class="field"><span>Travel style</span><select id="style" name="style"><option value="budget">Budget</option><option value="premium" selected>Premium</option><option value="luxury">Luxury</option></select></label>
-            <label class="field"><span>Display currency</span><select id="currency" name="currency"><option value="INR" selected>INR · ₹</option><option value="USD">USD · $</option><option value="GBP">GBP · £</option><option value="EUR">EUR · €</option><option value="AUD">AUD · A$</option><option value="CAD">CAD · C$</option></select></label>
+            <label class="field"><span>Your currency (trip total)</span><select id="currency" name="currency"><option value="INR" selected>INR · Indian rupee</option><option value="USD">USD · US dollar</option><option value="GBP">GBP · British pound</option><option value="EUR">EUR · Euro</option><option value="AUD">AUD · Australian dollar</option><option value="CAD">CAD · Canadian dollar</option><option value="JPY">JPY · Japanese yen</option><option value="SGD">SGD · Singapore dollar</option><option value="AED">AED · UAE dirham</option><option value="CHF">CHF · Swiss franc</option><option value="NZD">NZD · New Zealand dollar</option><option value="THB">THB · Thai baht</option><option value="IDR">IDR · Indonesian rupiah</option><option value="MXN">MXN · Mexican peso</option><option value="ZAR">ZAR · South African rand</option></select></label><label class="field"><span>Destination spending currency</span><select id="destination-currency" name="destinationCurrency"><option value="INR" selected>INR · Indian rupee</option><option value="USD">USD · US dollar</option><option value="GBP">GBP · British pound</option><option value="EUR">EUR · Euro</option><option value="AUD">AUD · Australian dollar</option><option value="CAD">CAD · Canadian dollar</option><option value="JPY">JPY · Japanese yen</option><option value="SGD">SGD · Singapore dollar</option><option value="AED">AED · UAE dirham</option><option value="CHF">CHF · Swiss franc</option><option value="NZD">NZD · New Zealand dollar</option><option value="THB">THB · Thai baht</option><option value="IDR">IDR · Indonesian rupiah</option><option value="MXN">MXN · Mexican peso</option><option value="ZAR">ZAR · South African rand</option></select></label>
           </div>
           <div class="form-divider"></div>
           <div class="form-topline"><span class="step-number">02</span><span>MAKE IT YOURS</span></div>
@@ -52,10 +52,10 @@
           </div>
           <div class="cost-inputs-heading"><div><strong>Cost assumptions</strong><span>Use sample starting values or replace them with researched prices.</span></div><button type="button" class="reset-link" id="reset-rates">Reset sample costs ↺</button></div>
           <div class="field-grid">
-            <label class="field"><span>Stay / room / night</span><div class="money-input"><b class="currency-symbol">₹</b><input id="stay-rate" type="number" min="0" step="1" value="4500"></div></label>
-            <label class="field"><span>Food / person / day</span><div class="money-input"><b class="currency-symbol">₹</b><input id="food-rate" type="number" min="0" step="1" value="900"></div></label>
-            <label class="field"><span>Activities / person / day</span><div class="money-input"><b class="currency-symbol">₹</b><input id="activity-rate" type="number" min="0" step="1" value="700"></div></label>
-            <label class="field"><span>Local transport / day <small>(whole group)</small></span><div class="money-input"><b class="currency-symbol">₹</b><input id="local-rate" type="number" min="0" step="1" value="700"></div></label>
+            <label class="field"><span>Stay / room / night <small>(destination currency)</small></span><div class="money-input"><b class="currency-symbol">₹</b><input id="stay-rate" type="number" min="0" step="1" value="4500"></div></label>
+            <label class="field"><span>Food / person / day <small>(destination currency)</small></span><div class="money-input"><b class="currency-symbol">₹</b><input id="food-rate" type="number" min="0" step="1" value="900"></div></label>
+            <label class="field"><span>Activities / person / day <small>(destination currency)</small></span><div class="money-input"><b class="currency-symbol">₹</b><input id="activity-rate" type="number" min="0" step="1" value="700"></div></label>
+            <label class="field"><span>Local transport / day <small>(group, destination currency)</small></span><div class="money-input"><b class="currency-symbol">₹</b><input id="local-rate" type="number" min="0" step="1" value="700"></div></label>
           </div>
           <div id="car-fields" class="field-grid transport-fields">
             <label class="field"><span>Total route distance <small>(round trip, km)</small></span><div class="input-with-unit"><input id="distance" type="number" min="0" step="1" value="650"><span>km</span></div></label>
@@ -75,7 +75,7 @@
     </section>
     <section id="results" class="results-section section-wrap hidden" aria-live="polite">
       <div class="results-heading"><div><div class="eyebrow"><span class="eyebrow-dot"></span> YOUR TRIP SNAPSHOT</div><h2 id="result-title">Your trip, <em>at a glance.</em></h2></div><div class="result-actions"><button type="button" class="button button-outline" id="copy-plan">Copy plan</button><button type="button" class="button button-primary" id="print-plan">Print / save PDF ↗</button></div></div>
-      <div class="total-card"><div><span class="total-overline">ESTIMATED TOTAL TRIP COST</span><div class="total-amount" id="total-cost">₹0</div><p id="total-subtitle">For your group · sample planning estimate</p></div><div class="total-per-person"><span>PER PERSON</span><strong id="per-person">₹0</strong></div><div class="budget-status" id="budget-status">Budget not set</div></div>
+      <div class="total-card"><div><span class="total-overline">ESTIMATED TOTAL TRIP COST</span><div class="total-amount" id="total-cost">₹0</div><p id="total-subtitle">For your group · sample planning estimate</p><p class="fine-print fx-note" id="fx-note">Currency conversion details appear here.</p></div><div class="total-per-person"><span>PER PERSON</span><strong id="per-person">₹0</strong></div><div class="budget-status" id="budget-status">Budget not set</div></div>
       <div class="result-grid">
         <div class="result-panel"><div class="panel-heading"><div><span class="panel-kicker">THE BREAKDOWN</span><h3>Where it goes</h3></div><span class="panel-icon">↗</span></div><div id="cost-breakdown" class="breakdown-list"></div><div class="buffer-row"><span>Contingency allowance · 10%</span><strong id="buffer-cost">₹0</strong></div><p class="fine-print" id="cost-assumption">Estimate assumes two guests per room. Adjust the room count below if needed.</p></div>
         <div class="result-panel itinerary-panel"><div class="panel-heading"><div><span class="panel-kicker">YOUR ROUTE, YOUR RHYTHM</span><h3>A simple itinerary</h3></div><span class="panel-icon">✳</span></div><div id="itinerary-list" class="itinerary-list"></div><p class="fine-print">This is a planning outline, not a verified local guide. Confirm opening hours, road conditions and activity availability before departure.</p></div>
