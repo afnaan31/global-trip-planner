@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#122c2a">
+  <meta name="description" content="Plan a better trip with a clear itinerary and an editable budget for stays, food, transport and activities.">
+  <title>Roamora — Your trip, fully figured out</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"><script src="app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="Roamora home"><span class="brand-mark">r.</span><span>roamora<span class="brand-dot">.</span></span></a>
+    <nav class="main-nav" aria-label="Main navigation"><a href="#planner">Trip planner</a><a href="#how-it-works">How it works</a><a href="#inspiration">Inspiration</a></nav>
+    <a class="header-cta" href="#planner">Plan a trip <span aria-hidden="true">↗</span></a>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> Travel planning, made clearer</div>
+        <h1>Go places.<br><em>Know the cost.</em></h1>
+        <p class="hero-lede">Build a trip that fits your budget, your pace and your kind of adventure — before you book a thing.</p>
+        <div class="hero-actions"><a class="button button-primary" href="#planner">Build my trip <span aria-hidden="true">↗</span></a><a class="text-link" href="#how-it-works">See how it works <span aria-hidden="true">↓</span></a></div>
+        <div class="hero-proof"><div class="proof-avatars" aria-hidden="true"><span>✦</span><span>↗</span><span>◎</span></div><p><strong>One plan, all the pieces.</strong><br><span>Stay · food · transport · experiences</span></p></div>
+      </div>
+      <div class="hero-visual" aria-label="Travel inspiration">
+        <div class="visual-image image-main"><div class="image-label"><span>01 / FIND YOUR NEXT</span><strong>Somewhere<br>beautiful.</strong></div></div>
+        <div class="visual-image image-small"><span class="small-image-caption">TAKE THE SCENIC ROUTE</span></div>
+        <div class="floating-note"><span class="note-icon">↗</span><span><strong>Made around you</strong><small>Your pace. Your budget.</small></span></div>
+        <div class="visual-stamp">THE WORLD<br>IS WAITING</div>
+      </div>
+    </section>
+    <section class="trust-strip"><span><i>✳</i> Your budget, your rules</span><span><i>✳</i> Flexible trip lengths</span><span><i>✳</i> One clear cost breakdown</span><span><i>✳</i> No booking required to plan</span></section>
+    <section class="planner-section section-wrap" id="planner">
+      <div class="section-heading"><div><div class="eyebrow"><span class="eyebrow-dot"></span> The trip builder</div><h2>Let's make a plan<br><em>that makes sense.</em></h2></div><p>Start with the basics. Then adjust the cost assumptions to match the prices you find. Your estimate updates around your trip.</p></div>
+      <div class="planner-layout">
+        <form class="planner-card" id="trip-form">
+          <div class="form-topline"><span class="step-number">01</span><span>YOUR JOURNEY</span><span class="form-topline-rule"></span><span class="live-label"><i></i> Editable estimate</span></div>
+          <div class="field-grid">
+            <label class="field field-wide"><span>Starting from</span><input id="origin" name="origin" type="text" value="Bengaluru" placeholder="City or airport" required></label>
+            <label class="field field-wide"><span>Where to?</span><input id="destination" name="destination" type="text" value="Munnar, India" placeholder="City, region or country" required></label>
+            <label class="field"><span>Trip length</span><div class="input-with-unit"><input id="days" name="days" type="number" min="1" max="30" value="3" required><span>days</span></div></label>
+            <label class="field"><span>Travellers</span><div class="input-with-unit"><input id="travellers" name="travellers" type="number" min="1" max="40" value="2" required><span>people</span></div></label>
+            <label class="field"><span>Travel style</span><select id="style" name="style"><option value="budget">Budget</option><option value="premium" selected>Premium</option><option value="luxury">Luxury</option></select></label>
+            <label class="field"><span>Display currency</span><select id="currency" name="currency"><option value="INR" selected>INR · ₹</option><option value="USD">USD · $</option><option value="GBP">GBP · £</option><option value="EUR">EUR · €</option><option value="AUD">AUD · A$</option><option value="CAD">CAD · C$</option></select></label>
+          </div>
+          <div class="form-divider"></div>
+          <div class="form-topline"><span class="step-number">02</span><span>MAKE IT YOURS</span></div>
+          <div class="field-grid">
+            <label class="field"><span>How will you travel?</span><select id="transport" name="transport"><option value="car" selected>Petrol / diesel car</option><option value="public">Public transport</option><option value="flight">Flights / long distance</option></select></label>
+            <label class="field"><span>Target trip budget <small>(optional)</small></span><input id="target-budget" name="targetBudget" type="number" min="0" step="1" placeholder="e.g. 25000"></label>
+          </div>
+          <div class="cost-inputs-heading"><div><strong>Cost assumptions</strong><span>Use sample starting values or replace them with researched prices.</span></div><button type="button" class="reset-link" id="reset-rates">Reset sample costs ↺</button></div>
+          <div class="field-grid">
+            <label class="field"><span>Stay / room / night</span><div class="money-input"><b class="currency-symbol">₹</b><input id="stay-rate" type="number" min="0" step="1" value="4500"></div></label>
+            <label class="field"><span>Food / person / day</span><div class="money-input"><b class="currency-symbol">₹</b><input id="food-rate" type="number" min="0" step="1" value="900"></div></label>
+            <label class="field"><span>Activities / person / day</span><div class="money-input"><b class="currency-symbol">₹</b><input id="activity-rate" type="number" min="0" step="1" value="700"></div></label>
+            <label class="field"><span>Local transport / day <small>(whole group)</small></span><div class="money-input"><b class="currency-symbol">₹</b><input id="local-rate" type="number" min="0" step="1" value="700"></div></label>
+          </div>
+          <div id="car-fields" class="field-grid transport-fields">
+            <label class="field"><span>Total route distance <small>(round trip, km)</small></span><div class="input-with-unit"><input id="distance" type="number" min="0" step="1" value="650"><span>km</span></div></label>
+            <label class="field"><span>Vehicle efficiency</span><div class="input-with-unit"><input id="efficiency" type="number" min="0.1" step="0.1" value="15"><span>km/L</span></div></label>
+            <label class="field"><span>Fuel price / litre</span><div class="money-input"><b class="currency-symbol">₹</b><input id="fuel-price" type="number" min="0" step="0.01" value="105"></div></label>
+            <label class="field"><span>Tolls + parking</span><div class="money-input"><b class="currency-symbol">₹</b><input id="tolls" type="number" min="0" step="1" value="500"></div></label>
+          </div>
+          <div id="other-transport-fields" class="field-grid transport-fields hidden"><label class="field field-wide"><span>Transport cost / person <small>(whole trip)</small></span><div class="money-input"><b class="currency-symbol">₹</b><input id="ticket-rate" type="number" min="0" step="1" value="4000"></div></label></div>
+          <p class="assumption-note"><span>ⓘ</span> The sample rates are illustrative placeholders, not live destination prices. Check current accommodation, fuel, ticket and activity prices before booking. Stay cost assumes the room count you enter in the result.</p>
+          <button class="button button-primary calculate-button" type="submit">Calculate my trip <span aria-hidden="true">↗</span></button>
+        </form>
+        <aside class="planner-aside">
+          <div class="aside-card aside-dark"><div class="aside-top"><span>THE ROAMORA APPROACH</span><span class="aside-star">✳</span></div><h3>A good trip<br>shouldn't come<br>with surprises.</h3><p>See the big picture before you commit. Change the numbers as you discover real prices.</p><div class="aside-line"></div><div class="aside-bottom"><span>PLAN WITH CLARITY</span><span>✦ &nbsp; 01 — 04</span></div></div>
+          <div class="aside-tip"><span class="tip-icon">✎</span><div><strong>Make the estimate yours</strong><p>Swap the sample costs for quotes from your chosen stays, restaurants and activity providers.</p></div></div>
+        </aside>
+      </div>
+    </section>
+    <section id="results" class="results-section section-wrap hidden" aria-live="polite">
+      <div class="results-heading"><div><div class="eyebrow"><span class="eyebrow-dot"></span> YOUR TRIP SNAPSHOT</div><h2 id="result-title">Your trip, <em>at a glance.</em></h2></div><div class="result-actions"><button type="button" class="button button-outline" id="copy-plan">Copy plan</button><button type="button" class="button button-primary" id="print-plan">Print / save PDF ↗</button></div></div>
+      <div class="total-card"><div><span class="total-overline">ESTIMATED TOTAL TRIP COST</span><div class="total-amount" id="total-cost">₹0</div><p id="total-subtitle">For your group · sample planning estimate</p></div><div class="total-per-person"><span>PER PERSON</span><strong id="per-person">₹0</strong></div><div class="budget-status" id="budget-status">Budget not set</div></div>
+      <div class="result-grid">
+        <div class="result-panel"><div class="panel-heading"><div><span class="panel-kicker">THE BREAKDOWN</span><h3>Where it goes</h3></div><span class="panel-icon">↗</span></div><div id="cost-breakdown" class="breakdown-list"></div><div class="buffer-row"><span>Contingency allowance · 10%</span><strong id="buffer-cost">₹0</strong></div><p class="fine-print" id="cost-assumption">Estimate assumes two guests per room. Adjust the room count below if needed.</p></div>
+        <div class="result-panel itinerary-panel"><div class="panel-heading"><div><span class="panel-kicker">YOUR ROUTE, YOUR RHYTHM</span><h3>A simple itinerary</h3></div><span class="panel-icon">✳</span></div><div id="itinerary-list" class="itinerary-list"></div><p class="fine-print">This is a planning outline, not a verified local guide. Confirm opening hours, road conditions and activity availability before departure.</p></div>
+      </div>
+      <div class="room-adjust"><label for="rooms">Number of rooms</label><div class="input-with-unit"><input id="rooms" type="number" min="0" max="20" value="1"><span>rooms</span></div><button type="button" class="text-link" id="recalculate-rooms">Update stay cost ↗</button></div>
+    </section>
+    <section class="how-section" id="how-it-works"><div class="section-wrap"><div class="section-heading compact-heading"><div><div class="eyebrow"><span class="eyebrow-dot"></span> HOW IT WORKS</div><h2>Less tab-hopping.<br><em>More looking forward.</em></h2></div><p>One place to shape the trip, understand the spend and keep the details together.</p></div><div class="steps-grid">
+      <article class="step-card"><span class="step-index">01</span><div class="step-art art-pin">⌖</div><h3>Choose your direction</h3><p>Add your start point, destination, dates and the people coming along.</p></article>
+      <article class="step-card"><span class="step-index">02</span><div class="step-art art-sliders">☷</div><h3>Set your kind of trip</h3><p>Pick budget, premium or luxury — then edit the prices to match your research.</p></article>
+      <article class="step-card"><span class="step-index">03</span><div class="step-art art-route">↗</div><h3>See the full picture</h3><p>Review the cost split, per-person estimate and a simple day-by-day outline.</p></article>
+    </div></div></section>
+    <section class="inspiration-section section-wrap" id="inspiration"><div class="section-heading compact-heading"><div><div class="eyebrow"><span class="eyebrow-dot"></span> A LITTLE INSPIRATION</div><h2>Where could you <em>go next?</em></h2></div><p>Pick a starting idea and make it your own. These are destination prompts, not booking listings.</p></div>
+      <div class="destination-grid">
+        <button class="destination-card destination-bali" type="button" data-destination="Bali, Indonesia"><span class="destination-count">01 / ISLAND TIME</span><strong>Bali</strong><span class="destination-arrow">↗</span></button>
+        <button class="destination-card destination-kyoto" type="button" data-destination="Kyoto, Japan"><span class="destination-count">02 / CULTURE & CALM</span><strong>Kyoto</strong><span class="destination-arrow">↗</span></button>
+        <button class="destination-card destination-alps" type="button" data-destination="Swiss Alps, Switzerland"><span class="destination-count">03 / MOUNTAIN AIR</span><strong>Swiss Alps</strong><span class="destination-arrow">↗</span></button>
+        <button class="destination-card destination-lisbon" type="button" data-destination="Lisbon, Portugal"><span class="destination-count">04 / CITY & COAST</span><strong>Lisbon</strong><span class="destination-arrow">↗</span></button>
+      </div>
+    </section>
+    <section class="closing-cta"><div class="closing-inner"><div class="eyebrow eyebrow-light"><span class="eyebrow-dot"></span> YOUR NEXT CHAPTER STARTS SOMEWHERE</div><h2>Make room for<br><em>the somewhere.</em></h2><a class="button button-light" href="#planner">Start planning <span aria-hidden="true">↗</span></a></div></section>
+  </main>
+  <footer class="site-footer"><a class="brand brand-footer" href="#"><span class="brand-mark">r.</span><span>roamora<span class="brand-dot">.</span></span></a><p>Plan thoughtfully. Travel fully.</p><span>© <span id="year"></span> Roamora · Early preview</span></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
